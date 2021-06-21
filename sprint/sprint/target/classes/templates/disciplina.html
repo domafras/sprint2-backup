@@ -1,0 +1,59 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>
+	<div th:replace="~{base :: logo}"></div>
+
+	<div class="container">
+
+		<nav
+			class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
+			<div class="navbar-nav">
+				<a th:classappend="${status} == null ? 'active'"
+					class="nav-item nav-link" href="/home">Home</a> <a
+					th:classappend="${status} == 'aguardando' ? 'active'"
+					class="nav-item nav-link" href="/aluno">Aluno</a> <a
+					th:classappend="${status} == 'aprovado' ? 'active'"
+					class="nav-item nav-link" href="/professor">Professor</a> <a
+					th:classappend="${status} == 'entregue' ? 'active'"
+					class="nav-item nav-link" href="/turma">Turma</a> <a
+					th:classappend="${status} == 'entregue' ? 'active'"
+					class="nav-item nav-link" href="/curso">Curso</a> <a
+					th:classappend="${status} == 'entregue' ? 'active'"
+					class="nav-item nav-link" href="/disciplina">Disciplina</a>
+				<div>
+					<a href="/disciplina/novo">
+						<button class="btn btn-outline-secondary my-2 my-sm-0">Nova disciplina</button>
+					</a>
+
+				</div>
+			</div>
+		</nav>
+
+		<div class="card mb-3" th:each="disciplina : ${listDisciplinas}">
+
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-sm-8 mb-3">
+						<div class="row">
+							<div class="col-md-5">
+								Nome: <span th:text="${disciplina.nome}">Nome</span>
+							</div>
+							<div class="col-md-5">
+								Codigo: <span th:text="${disciplina.codigo}">Codigo</span>
+							</div>
+						</div>
+						<a th:href="@{'/disciplina/edit/' + ${disciplina.id}}">
+							<button class="btn btn-outline-secondary my-2 my-sm-0">Editar</button>
+						</a> <a th:href="@{'/disciplina/delete/' + ${disciplina.id}}">
+							<button class="btn btn-outline-secondary my-2 my-sm-0">Excluir</button>
+						</a>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

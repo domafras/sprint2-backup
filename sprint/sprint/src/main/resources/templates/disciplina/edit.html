@@ -1,0 +1,25 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>
+    <div th:replace="~{base :: logo}"></div>
+    <div align="center">
+        <h1>Editar disciplina</h1>
+        <br />
+        <form action="#" th:action="@{/disciplina/save}" th:object="${disciplina}"
+            method="post">
+            <input type="hidden" th:field="*{id}" />
+ 			<input type="hidden" th:field="*{nome}" />
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Nome:</td>
+                    <td><input type="text" th:maxlength="10" th:field="*{nome}" /></td>
+                </tr>
+            
+                <tr>
+                    <td colspan="2"><button type="submit">Salvar</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

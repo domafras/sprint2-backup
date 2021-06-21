@@ -1,0 +1,28 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>
+	<div th:replace="~{base :: logo}"></div>
+
+	<div align="center">
+		<h1>Criar nova turma</h1>
+		<br />
+		<form action="#" th:action="@{/turma/save}" th:object="${turma}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Codigo:</td>
+					<td><input type="text" th:maxlength="30" th:field="*{codigo}" /></td>
+				</tr>
+					<tr>
+					<td>Codigo Curso:</td>
+					<td><input type="text" th:maxlength="10"
+						th:field="*{codigoCurso}" /></td>
+				</tr>
+					<td colspan="2"><button type="submit">Salvar</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

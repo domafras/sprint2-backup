@@ -1,0 +1,62 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>
+	<div th:replace="~{base :: logo}"></div>
+
+	<div class="container">
+
+		<nav
+			class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
+			<div class="navbar-nav">
+				<a th:classappend="${status} == null ? 'active'"
+					class="nav-item nav-link" href="/home">Home</a> <a
+					th:classappend="${status} == 'aguardando' ? 'active'"
+					class="nav-item nav-link" href="/aluno">Aluno</a> <a
+					th:classappend="${status} == 'aprovado' ? 'active'"
+					class="nav-item nav-link" href="/professor">Professor</a> <a
+					th:classappend="${status} == 'entregue' ? 'active'"
+					class="nav-item nav-link" href="/turma">Turma</a> <a
+					th:classappend="${status} == 'entregue' ? 'active'"
+					class="nav-item nav-link" href="/curso">Curso</a> <a
+					th:classappend="${status} == 'entregue' ? 'active'"
+					class="nav-item nav-link" href="/disciplina">Disciplina</a>
+				<div>
+					<a href="/professor/novo">
+						<button class="btn btn-outline-secondary my-2 my-sm-0">Novo professor</button>
+					</a>
+
+				</div>
+			</div>
+		</nav>
+
+		<div class="card mb-3" th:each="professor : ${listProfessores}">
+
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-sm-8 mb-3">
+						<div class="row">
+							<div class="col-md-5">
+								Nome: <span th:text="${professor.nome}">Nome</span>
+							</div>
+							<div class="col-md-5">
+								Sexo: <span th:text="${professor.sexo}">Sexo</span>
+							</div>
+							<div class="col-md-5">
+								Registro: <span th:text="${professor.registro}">Registro</span>
+							</div>
+						</div>
+						<a th:href="@{'/professor/edit/' + ${professor.id}}">
+							<button class="btn btn-outline-secondary my-2 my-sm-0">Editar</button>
+						</a> <a th:href="@{'/professor/delete/' + ${professor.id}}">
+							<button class="btn btn-outline-secondary my-2 my-sm-0">Excluir</button>
+						</a>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

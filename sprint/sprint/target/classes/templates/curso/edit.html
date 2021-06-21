@@ -1,0 +1,26 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>
+    <div th:replace="~{base :: logo}"></div>
+    <div align="center">
+        <h1>Editar curso</h1>
+        <br />
+        <form action="#" th:action="@{/curso/save}" th:object="${curso}"
+            method="post">
+            <input type="hidden" th:field="*{id}" />
+ 			<input type="hidden" th:field="*{nome}" />
+ 			<input type="hidden" th:field="*{codigo}" />
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Codigo:</td>
+                    <td><input type="text" th:maxlength="10" th:field="*{codigo}" /></td>
+                </tr>
+            
+                <tr>
+                    <td colspan="2"><button type="submit">Salvar</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
